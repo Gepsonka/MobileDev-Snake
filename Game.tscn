@@ -1,4 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Food.gd" type="Script" id=1]
+[ext_resource path="res://assets/food.png" type="Texture" id=2]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://Silkscreen-Regular.ttf"
@@ -24,3 +27,27 @@ custom_fonts/font = SubResource( 2 )
 text = "Score: 20"
 align = 1
 valign = 1
+
+[node name="Food" type="Sprite" parent="."]
+position = Vector2( 276, 712 )
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+
+[node name="Snake" type="Node" parent="."]
+
+[node name="Head" type="ColorRect" parent="Snake"]
+margin_left = 25.0
+margin_top = 195.0
+margin_right = 65.0
+margin_bottom = 235.0
+color = Color( 1, 0.0666667, 0.470588, 1 )
+
+[node name="Body" type="ColorRect" parent="Snake"]
+margin_left = 73.0
+margin_top = 194.0
+margin_right = 113.0
+margin_bottom = 234.0
+color = Color( 1, 0.94902, 0.0196078, 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
