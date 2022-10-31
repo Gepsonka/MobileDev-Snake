@@ -1,7 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Food.gd" type="Script" id=1]
 [ext_resource path="res://assets/food.png" type="Texture" id=2]
+[ext_resource path="res://assets/icons8-settings-64.png" type="Texture" id=3]
+[ext_resource path="res://PauseButton.gd" type="Script" id=4]
+[ext_resource path="res://PauseMenu.gd" type="Script" id=5]
+[ext_resource path="res://QuitButton.gd" type="Script" id=6]
+[ext_resource path="res://MainMenuButton.gd" type="Script" id=7]
+[ext_resource path="res://ContinueButton.gd" type="Script" id=8]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://Silkscreen-Regular.ttf"
@@ -9,6 +15,21 @@ font_path = "res://Silkscreen-Regular.ttf"
 [sub_resource type="DynamicFont" id=2]
 size = 40
 font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://assets/Silkscreen-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 70
+font_data = SubResource( 3 )
+
+[sub_resource type="DynamicFontData" id=5]
+font_path = "res://assets/Silkscreen-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=6]
+size = 30
+outline_color = Color( 0.666667, 0.666667, 0.666667, 1 )
+font_data = SubResource( 5 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -29,7 +50,7 @@ align = 1
 valign = 1
 
 [node name="Food" type="Sprite" parent="."]
-position = Vector2( 276, 712 )
+position = Vector2( 264, 556 )
 texture = ExtResource( 2 )
 script = ExtResource( 1 )
 
@@ -51,3 +72,73 @@ color = Color( 1, 0.94902, 0.0196078, 1 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="PauseMenu" type="Node2D" parent="."]
+visible = false
+z_index = 10
+script = ExtResource( 5 )
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
+margin_right = 600.0
+margin_bottom = 1024.0
+rect_scale = Vector2( 0.997123, 1 )
+color = Color( 0.133333, 0.14902, 0.180392, 0.462745 )
+
+[node name="Label" type="Label" parent="PauseMenu"]
+margin_top = 70.0
+margin_right = 600.0
+margin_bottom = 170.0
+custom_fonts/font = SubResource( 4 )
+text = "Paused"
+align = 1
+valign = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
+margin_top = 500.0
+margin_right = 600.0
+margin_bottom = 643.0
+
+[node name="ContinueButton" type="Button" parent="PauseMenu/VBoxContainer"]
+margin_right = 600.0
+margin_bottom = 45.0
+custom_colors/font_color = Color( 0.843137, 0.843137, 0.843137, 1 )
+custom_colors/font_color_pressed = Color( 0.345098, 0.345098, 0.345098, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Continue"
+flat = true
+script = ExtResource( 8 )
+
+[node name="MainMenuButton" type="Button" parent="PauseMenu/VBoxContainer"]
+margin_top = 49.0
+margin_right = 600.0
+margin_bottom = 94.0
+custom_colors/font_color = Color( 0.843137, 0.843137, 0.843137, 1 )
+custom_colors/font_color_pressed = Color( 0.345098, 0.345098, 0.345098, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Main Menu"
+flat = true
+script = ExtResource( 7 )
+
+[node name="QuitButton" type="Button" parent="PauseMenu/VBoxContainer"]
+margin_top = 98.0
+margin_right = 600.0
+margin_bottom = 143.0
+custom_colors/font_color = Color( 0.843137, 0.843137, 0.843137, 1 )
+custom_colors/font_color_pressed = Color( 0.345098, 0.345098, 0.345098, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Quit"
+flat = true
+script = ExtResource( 6 )
+
+[node name="Node2D" type="Node2D" parent="."]
+z_index = 100
+
+[node name="PauseButton" type="TextureButton" parent="Node2D"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 3 )
+texture_disabled = ExtResource( 3 )
+texture_focused = ExtResource( 3 )
+script = ExtResource( 4 )
