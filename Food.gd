@@ -1,4 +1,4 @@
-extends Sprite
+extends ColorRect
 
 
 # Declare member variables here. Examples:
@@ -11,7 +11,7 @@ func _ready():
 	rng.randomize()
 	
 func change_poz():
-	self.position = Vector2(rng.randi_range(0, 12)*50, rng.randi_range(0, 14)*50)
+	self.rect_position = Vector2(rng.randi_range(0, 11)*50, rng.randi_range(0, 13)*50)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
